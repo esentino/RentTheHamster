@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="get" >
+    <label>
+        Nazwa:
+        <input type="text" name="name"/>
+    </label>
+    <label>
+        Pojemność:
+        <input type="number" name="capacity_from"/>
+    </label>
+        <label>
+        Pojemność:
+        <input type="number" name="capacity_to"/>
+    </label>
+    <label>
+        Jest rzutnik:
+        <input type="checkbox" name="has_projector"/>
+    </label>
+    <button type="submit" value="Dodaj sale">Znajdź salę</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sala in salas %}
+    <tr>
+        <td>{{ sala.name }}</td>
+        <td>{{ sala.capacity }}</td>
+        <td>{{ sala.has_projector }}</td>
+        <td>-----------</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

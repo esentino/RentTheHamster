@@ -59,3 +59,23 @@ class MainView(View):
         salas = Sala.objects.all()
         ctx = {'salas': salas}
         return render(request, 'main.html', ctx)
+
+class SearchView(View):
+    def get(self, request):
+        name = request.GET.get("name")
+        capacity_from = request.GET.get("capacity_from")
+        capacity_to = request.GET.get("capacity_to")
+        has_projector = request.GET.get("has_projector")
+
+        salas = Sala.objects.all()
+        if name:
+            salas = salas.filter(name__icontains=name)
+        if capacity_from:
+            salas = salas.filter(capacity__gte=capacity_from)
+        if capacity_to:
+            salas = salas.filter(capacity__lte=capacity_to)
+        if has_projector:
+            salas = salas.filter(has_projector=True)
+        ctx = {'salas': salas}
+
+        return render(request, 'search.html', ctx)

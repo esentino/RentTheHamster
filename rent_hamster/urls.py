@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from renting.views import AddSalaView, ModifySalaView, MainView
+from renting.views import AddSalaView, ModifySalaView, MainView, SearchView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("room/add", AddSalaView.as_view()),
     path("room/modify/<int:id>", ModifySalaView.as_view()),
+    path("search", SearchView.as_view()),
     path("", MainView.as_view()),
 ]
