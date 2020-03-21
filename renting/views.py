@@ -40,7 +40,7 @@ class ModifySalaView(View):
         name = request.POST.get("name")
         capacity = request.POST.get("capacity")
         has_projector = request.POST.get("has_projector")
-        ctx = {}
+        ctx = {'sala': sala}
         if name and capacity:
             projector = False
             if has_projector == 'on':
