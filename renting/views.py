@@ -40,7 +40,7 @@ class ModifySalaView(View):
         name = request.POST.get("name")
         capacity = request.POST.get("capacity")
         has_projector = request.POST.get("has_projector")
-        ctx = {'sala': sala}
+        ctx = {}
         if name and capacity:
             projector = False
             if has_projector == 'on':
@@ -50,4 +50,5 @@ class ModifySalaView(View):
             sala.has_projector = projector
             sala.save()
             ctx['success'] = 'Zapisano sale'
+        ctx['sala'] = sala
         return render(request, 'modify_sala.html', ctx)
