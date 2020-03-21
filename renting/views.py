@@ -34,3 +34,20 @@ class ModifySalaView(View):
         sala = Sala.objects.get(id=id)
         ctx = {'sala': sala}
         return render(request, 'modify_sala.html', ctx)
+
+    def post(self, request, id):
+        sala = Sala.objects.get(id=id)
+        name = request.POST.get("name")
+        capacity = request.POST.get("capacity")
+        has_projector = request.POST.get("has_projector")
+        ctx = {}
+        if name and capacity:
+            projector = False
+            if has_projector == 'on':
+                projector = True
+            sala.name = name
+            sala.capacity = capacity
+            sala.has_projector = projector
+            sala.save()
+            ctx['success'] = 'Zapisano sale'
+        return render(request, 'modify_sala.html', ctx)
