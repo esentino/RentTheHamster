@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sala in salas %}
+    <tr>
+        <td>{{ sala.name }}</td>
+        <td>-----------</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -52,3 +52,10 @@ class ModifySalaView(View):
             ctx['success'] = 'Zapisano sale'
         ctx['sala'] = sala
         return render(request, 'modify_sala.html', ctx)
+
+
+class MainView(View):
+    def get(self, request):
+        salas = Sala.objects.all()
+        ctx = {'salas': salas}
+        return render(request, 'main.html', ctx)
