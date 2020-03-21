@@ -74,6 +74,16 @@ class SearchView(View):
             salas = salas.filter(capacity__gte=capacity_from)
         if capacity_to:
             salas = salas.filter(capacity__lte=capacity_to)
+        # ma projektor lub ma pojemność większą niż 10
+        # from django.db.models import Q
+        # salas.filter(Q(has_projector=True) | Q(capacity__gt=10)
+        # ma projektor i ma pojemność większą niż 10
+        # salas.filter(Q(has_projector=True) & Q(capacity__gt=10)
+        # dobra_sala = Q(has_projector=True) & Q(capacity__gt=10)
+        # salas.filter(dobra_sala)
+        # promocja_na_mala_sale_bez_projektora = Q(has_projector=False) & Q(capacity__lt=6)
+        # salas.filter(promocja_na_mala_sale_bez_projektora)
+
         if has_projector:
             salas = salas.filter(has_projector=True)
         ctx = {'salas': salas}
