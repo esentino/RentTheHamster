@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: magenta">
+<h1>Dodawanie nowej sali</h1>
+<h2>{{ success }}</h2>
+<form action="" method="post" >
+    <label>
+        Nazwa:
+        <input type="text" name="name"/>
+    </label>
+    <label>
+        Pojemność:
+        <input type="number" name="capacity"/>
+    </label>
+    <label>
+        Jest rzutnik:
+        <input type="checkbox" name="has_projector"/>
+    </label>
+    {% csrf_token %}
+    <button type="submit" value="Dodaj sale">Dodaj sale</button>
+</form>
+</div>
+{% endblock %}

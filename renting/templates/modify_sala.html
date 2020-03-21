@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: magenta">
+<h1>Edycja sali</h1>
+<h2>{{ success }}</h2>
+<form action="" method="post" >
+    <label>
+        Nazwa:
+        <input type="text" name="name" value="{{ sala.name }}"/>
+    </label>
+    <label>
+        Pojemność:
+        <input type="number" name="capacity" value="{{ sala.capacity }}"/>
+    </label>
+    <label>
+        Jest rzutnik:
+        {% if sala.has_projector %}
+        <input type="checkbox" name="has_projector" checked/>
+        {% else %}
+        <input type="checkbox" name="has_projector"/>
+        {% endif %}
+    </label>
+    {% csrf_token %}
+    <button type="submit" value="Dodaj sale">Zapisz sale</button>
+</form>
+</div>
+{% endblock %}
